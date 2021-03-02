@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<head>
+  <title>&#10084;About Bailey&#10084;</title>
+  <link rel="stylesheet" href="AboutMe-Style.css">
+</head>
+
+<body onload="startTime()">
+  <!-- onload is a JS method which calls the given function as soon as the page is loaded -->
+  <!-- Without onload, the clock displayed at the bottom of the screen never appears because the routine was never initialized-->
+<div>
+  <!-- Putting all elements inside DIV because I want an opaque overlay to make text more readable and this was the easiest 'cheat' -->
+  <h1>There's Something About Bailey</h1>
+  <h2>Hello World! My name is Bailey, and this is a landing page with info about me.</h2>
+  
+  <hr align="center" width="40%">
+    <h3><b>About Me</b></h3>
+    <p>      
+      I grew up on a carnival in Arizona; in fact, I was born into a multi-generational, entrepreneurial-carny family. In other words: I am <i>Carny Royalty</i>. <br /> I'm a big nerd, and love math & science. I often question what I want to be when I grow up, but hopefully it involves software engineering!
+    </p>
+
+    <div class="dropdown">
+      <button id="myBtn" class="dropbtn">Bailey's Favorite Things</button>
+      <div id="myDropdown" class="dropdown-content">
+      <a href="https://twitter.com/elonmusk" target="_blank">Elon Musk</a>
+      <a href="https://www.theguardian.com/commentisfree/2021/feb/11/lawyer-cat-funny-texas-rod-ponton-judge" target="_blank">Lawyer Cat</a>
+      <a href="https://www.khanacademy.org/math/calculus-1" target="_blank">Maths</a>
+      <a href="https://www.youtube.com/channel/UC6gLlIAnzg7eJ8VuXDCZ_vg" target="_blank">ASMR</a>
+      </div>
+    </div>
+    <hr align="center" width="40%">
+    <h3>&#10084; <b>A Girl & Her Doge</b> &#10084;</h3>
+    <p>
+      I LOVE animals... but <u>especially</u> dogs! Although I have many photos of myself with various animals, Courage the Cowardly Doge was a special rescue boi, and we just really love this picture. Enjoy!
+    </p>
+    <a href="https://imgur.com/LFN6x8S"><img src="https://i.imgur.com/LFN6x8S.jpg?2" title="Dogs Are People Too" /></a>
+    <hr align="center" width="40%">
+    <h3><b>Contact</b></h3>
+    <p>
+      Although there's no reason this page should generate interest in my professional life, stranger things have happened... so here you go:<br />
+    </p>
+    <h3><a href="https://www.linkedin.com/in/baileyleavitt/" title="Click here to go to Bailey's LinkedIn page." target="_blank">Bailey's LinkedIn</a></h3>
+    <hr style="border-style: dotted;">
+
+    <!-- SHOW CURRENT TIME USING JS -->
+    <h2><i>...Be Present...</i></h2>
+    <h2 id="BaileysClock"></h2>
+
+  <!-- All the magical Javascript things happen within the SCRIPT tags below -->  
+  <script>
+    // INSERT THE CURRENT TIME AT THE BOTTOM OF THE PAGE
+    //    startTime initializes the clock element at the bottom of the page  
+    function startTime() {
+      var thePresent = new Date();
+      var h = thePresent.getHours();
+      var m = thePresent.getMinutes();
+      var s = thePresent.getSeconds();
+
+      m = checkTime(m);
+      s = checkTime(s);
+
+      document.getElementById('BaileysClock').innerHTML = h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+
+    //    checkTime updates the clock element at the bottom of the page with the current time and displays it correctly
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+    }
+
+    // Get the button, and when the user clicks on it, execute favThings
+    document.getElementById("myBtn").onclick = function() {
+      favThings()
+    };
+
+    // favThings toggles between adding and removing the show class, which is used to hide and show the dropdown content
+    function favThings() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+  </script>
+</div>
+</body>
